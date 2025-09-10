@@ -17,16 +17,33 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: dev-monitoring
+  name: dev-prometheus
   namespace: flux-system
 spec:
   interval: 1m
-  path: "./nortura-infra/monitoring"
+  path: "./nortura-infra/monitoring/base"
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  # optional: wait for HelmRelease resources to be ready
   wait: true
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: dev-monitoring-extras
+  namespace: flux-system
+spec:
+  interval: 1m
+  path: "./nortura-infra/monitoring/extras"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  wait: true
+  dependsOn:
+    - name: dev-prometheus  
 

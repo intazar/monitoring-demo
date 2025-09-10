@@ -4,4 +4,3 @@ resources:
   - namespace.yaml
   - helm-repo-prometheus.yaml
   - kube-prometheus-stack-helmrelease.yaml
-  - nginx-servicemonitor.yaml
