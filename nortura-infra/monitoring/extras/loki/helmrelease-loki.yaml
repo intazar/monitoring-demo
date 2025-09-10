@@ -5,6 +5,7 @@ metadata:
   namespace: monitoring
 spec:
   interval: 5m
+  timeout: 10m
   chart:
     spec:
       chart: loki
@@ -14,6 +15,8 @@ spec:
         namespace: flux-system
       version: "2.10.0"
   values:
+    podSecurityPolicy:
+      enabled: false
     persistence:
       enabled: true
       size: 5Gi
