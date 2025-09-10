@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+  install:
+    # allow helm to create namespace-scoped objects (chart will create its own)
+    remediation:
+      retries: 2
+  # Optional: set a small subset of values - change password if you like
+  values:
+    grafana:
+      enabled: true
+      adminUser: admin
+      adminPassword: prom-operator
+    # keep ServiceMonitors selected by label
+    prometheusOperator:
+      createCustomResource: true
