@@ -20,7 +20,8 @@ metadata:
   name: dev-prometheus
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 5m
+  timeout: 10m
   path: "./nortura-infra/monitoring/base"
   prune: true
   sourceRef:
