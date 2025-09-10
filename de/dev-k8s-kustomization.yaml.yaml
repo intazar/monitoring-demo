@@ -74,7 +74,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  timeout: 10m 
+  timeout: 20m 
   path: "./nortura-infra/monitoring/extras/loki"
   prune: true
   sourceRef:
