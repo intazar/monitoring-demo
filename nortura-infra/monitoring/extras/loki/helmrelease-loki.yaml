@@ -16,7 +16,7 @@ spec:
         kind: HelmRepository
         name: grafana
         namespace: flux-system
-      version: "2.9.1"
+      version: "6.40.0"
   values:
     podSecurityPolicy:
       enabled: false
