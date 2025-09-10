@@ -46,5 +46,22 @@ spec:
     namespace: flux-system
   wait: true
   dependsOn:
-    - name: dev-prometheus  
+    - name: dev-prometheus
+
+---
+# NEW: ingress controller
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: dev-ingress
+  namespace: flux-system
+spec:
+  interval: 1m
+  path: "./nortura-infra/ingress"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  wait: true
 

@@ -22,6 +22,9 @@ spec:
       enabled: true
       adminUser: admin
       adminPassword: prom-operator
+      service:
+        type: LoadBalancer      # <-- forces Grafana service to get an external IP
+        port: 80
     # keep ServiceMonitors selected by label
     prometheusOperator:
       createCustomResource: true
